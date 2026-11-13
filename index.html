@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mega Elétron Pouso Alegre | Scooters, patinetes e bikes elétricas sem CNH</title>
+  <meta name="description" content="Catálogo da Mega Elétron em Pouso Alegre-MG: scooters, patinetes, bikes elétricas e triciclos até 1000 W, todos sem CNH. Teste na loja e manutenção.">
+  <meta name="theme-color" content="#0d1626">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 34'%3E%3Cpath fill='%23d5be8c' d='M0 32 13 6l7 12 7-12 13 26h-7l-6-13-7 12-7-12-6 13z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Saira:wdth,wght@75..125,500..800&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<div class="faixa-previa" id="faixaPrevia" hidden>
+  Prévia · os produtos e preços mostrados são de exemplo
+</div>
+
+<header class="topo" id="topo">
+  <a class="marca" href="#inicio" aria-label="Mega Elétron Pouso Alegre, início">
+    <svg class="marca-picos" viewBox="0 0 40 34" aria-hidden="true"><path d="M0 32 13 6l7 12 7-12 13 26h-7l-6-13-7 12-7-12-6 13z"/></svg>
+    <span class="marca-nome"><b>MEGA</b><i>ELÉTRON</i></span>
+    <span class="marca-cidade">Pouso Alegre</span>
+  </a>
+  <nav class="menu" aria-label="Seções">
+    <a href="#catalogo">Catálogo</a>
+    <a href="#cnh">Sem CNH</a>
+    <a href="#test-ride">Testar</a>
+    <a href="#manutencao">Oficina</a>
+    <a href="#loja">Loja</a>
+  </nav>
+  <a class="btn btn-ouro btn-pq cta-zap" data-zap="topo" href="#">Chamar no WhatsApp</a>
+</header>
+
+<main>
+
+  <!-- ============ TOPO / ASSINATURA ============ -->
+  <section class="hero" id="inicio">
+    <svg class="hero-picos" viewBox="0 0 400 340" aria-hidden="true"><path d="M0 320 130 60l70 120 70-120 130 260h-70l-60-130-70 120-70-120-60 130z"/></svg>
+    <div class="hero-texto">
+      <p class="etiqueta">Veículos 100% elétricos · Pouso Alegre-MG</p>
+      <h1>Mude pro novo.<br><em>Mude pra elétrico.</em></h1>
+      <p class="hero-sub">Scooter, patinete, bike e triciclo elétrico pra ver, testar e sair andando. Me diz quanto você roda por dia que eu te mostro qual serve.</p>
+      <div class="hero-acoes">
+        <a class="btn btn-ouro" href="#catalogo">Ver o catálogo</a>
+        <a class="btn btn-linha" href="#test-ride">Agendar um teste</a>
+      </div>
+      <ul class="hero-provas">
+        <li><b>Sem CNH</b> em todos os modelos</li>
+        <li><b>Teste</b> na loja</li>
+        <li><b>Oficina</b> própria</li>
+      </ul>
+    </div>
+
+    <div class="painel" id="trajeto" aria-labelledby="trajetoTitulo">
+      <div class="painel-cab">
+        <span class="etiqueta" id="trajetoTitulo">Teu trajeto</span>
+        <span class="painel-led" aria-hidden="true"></span>
+      </div>
+
+      <label class="painel-pergunta" for="km">Quantos km você roda por dia?</label>
+      <div class="km-visor"><output id="kmValor" for="km">18</output><span>km/dia</span></div>
+      <input class="km-regua" type="range" id="km" min="2" max="100" step="1" value="18" aria-describedby="kmDica">
+      <div class="km-marcas" id="kmDica" aria-hidden="true"><span>2</span><span>ida e volta do trabalho</span><span>100</span></div>
+
+
+      <div class="carga" aria-live="polite">
+        <div class="carga-bat" aria-hidden="true">
+          <div class="carga-gomos" id="gomos"></div>
+          <span class="carga-polo"></span>
+        </div>
+        <p class="carga-txt" id="cargaTxt">Com a Scooter Urbana, sobra 64% de bateria no fim do dia.</p>
+      </div>
+
+      <dl class="painel-num">
+        <div><dt>Modelos que servem</dt><dd id="qtdServem">–</dd></div>
+        <div><dt>Economia vs moto</dt><dd id="ecoMoto">–</dd></div>
+        <div><dt>Economia vs carro</dt><dd id="ecoCarro">–</dd></div>
+      </dl>
+
+      <a class="btn btn-ouro btn-cheio" href="#catalogo" id="verServem">Ver os modelos que servem</a>
+      <p class="painel-nota" id="painelNota">Conta aproximada, por mês.</p>
+    </div>
+  </section>
+
+  <!-- ============ CATÁLOGO ============ -->
+  <section class="secao catalogo" id="catalogo">
+    <div class="secao-cab">
+      <p class="etiqueta">Catálogo</p>
+      <h2>Tudo que está na loja, num lugar só.</h2>
+      <p class="secao-sub" id="catalogoSub">Filtra por tipo ou usa o teu trajeto. Gostou de um? Chama no WhatsApp que a gente separa.</p>
+    </div>
+
+    <div class="filtros" id="filtros">
+      <div class="chips" id="chips" role="group" aria-label="Categorias"></div>
+      <div class="filtros-linha">
+        <label class="busca">
+          <span class="sr">Buscar produto</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          <input type="search" id="busca" placeholder="Buscar modelo…" autocomplete="off">
+        </label>
+        <button type="button" class="alterna" id="fTrajeto" aria-pressed="false" hidden>Cabe no meu trajeto</button>
+        <label class="ordem">
+          <span class="sr">Ordenar</span>
+          <select id="ordem">
+            <option value="destaque">Destaques primeiro</option>
+            <option value="menor">Menor preço</option>
+            <option value="maior">Maior preço</option>
+            <option value="autonomia">Maior autonomia</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <p class="contagem" id="contagem" aria-live="polite"></p>
+    <div class="grade" id="grade"></div>
+    <div class="vazio" id="vazio" hidden>
+      <p>Nada com esses filtros.</p>
+      <button type="button" class="btn btn-linha btn-pq" id="limpar">Limpar filtros</button>
+    </div>
+  </section>
+
+  <!-- ============ CNH ============ -->
+  <section class="secao cnh" id="cnh">
+    <div class="secao-cab">
+      <p class="etiqueta">Precisa de carteira?</p>
+      <h2>Aqui ninguém precisa de CNH.</h2>
+      <p class="secao-sub">Todos os nossos modelos têm motor de até 1000 W e vão até 32 km/h. Pela regra do Contran, isso dispensa carteira e placa.</p>
+    </div>
+    <ol class="regras">
+      <li>
+        <span class="regra-num">01</span>
+        <h3>Sem carteira</h3>
+        <p>Até <b>1000 W</b> e <b>32 km/h</b> não precisa de habilitação. Serve pra quem nunca tirou carteira.</p>
+        <p class="regra-tag ok">Sem CNH</p>
+        <button type="button" class="link-seta" data-filtro-cat="scooter">Ver scooters</button>
+      </li>
+      <li>
+        <span class="regra-num">02</span>
+        <h3>Sem placa</h3>
+        <p>Nada de emplacamento nem <b>licenciamento</b> todo ano. Comprou, saiu andando.</p>
+        <p class="regra-tag ok">Sem placa</p>
+        <button type="button" class="link-seta" data-filtro-cat="patinete">Ver patinetes</button>
+      </li>
+      <li>
+        <span class="regra-num">03</span>
+        <h3>Pra todo mundo</h3>
+        <p>Do estudante ao aposentado. Tem até <b>triciclo</b> pra quem tem receio de equilíbrio.</p>
+        <p class="regra-tag ok">Até 32 km/h</p>
+        <button type="button" class="link-seta" data-filtro-cat="triciclo">Ver triciclos</button>
+      </li>
+    </ol>
+    <p class="nota-legal">Resumo da Resolução Contran 996/2023 para equipamentos autopropelidos e bicicletas elétricas. A cidade pode ter regras próprias de circulação, e na loja a gente explica tudo.</p>
+  </section>
+
+  <!-- ============ TESTE NA LOJA ============ -->
+  <section class="secao test" id="test-ride">
+    <div class="test-texto">
+      <p class="etiqueta">Teste na loja</p>
+      <h2>Sobe, dá uma volta e depois decide.</h2>
+      <p class="secao-sub">Escolhe o modelo e o dia. Mando a mensagem pronta pro nosso WhatsApp e a gente confirma o horário.</p>
+      <ol class="passos">
+        <li><b>Escolhe</b> o modelo aqui no catálogo</li>
+        <li><b>Testa</b> na loja, com alguém do nosso lado</li>
+        <li><b>Sai andando</b> se for pronta entrega</li>
+      </ol>
+    </div>
+    <form class="form" id="formTest" novalidate>
+      <label>Teu nome
+        <input name="nome" required autocomplete="given-name" placeholder="Como te chamo?">
+      </label>
+      <label>Modelo
+        <select name="modelo" id="testModelo" required></select>
+      </label>
+      <div class="form-dupla">
+        <label>Dia
+          <input type="date" name="dia" id="testDia" required>
+        </label>
+        <label>Período
+          <select name="periodo">
+            <option>Manhã</option>
+            <option>Tarde</option>
+          </select>
+        </label>
+      </div>
+      <p class="form-erro" id="testErro" hidden>Preenche o nome, o modelo e o dia.</p>
+      <button class="btn btn-ouro btn-cheio cta-zap" type="submit">Agendar pelo WhatsApp</button>
+    </form>
+  </section>
+
+  <!-- ============ OFICINA ============ -->
+  <section class="secao oficina" id="manutencao">
+    <div class="secao-cab">
+      <p class="etiqueta">Oficina</p>
+      <h2>Comprou aqui ou não, a gente cuida.</h2>
+    </div>
+    <ul class="servicos">
+      <li><span>01</span><h3>Revisão</h3><p>Freio, aperto, folga e parte elétrica num check-up só.</p></li>
+      <li><span>02</span><h3>Bateria</h3><p>Teste de carga, troca de célula e bateria nova.</p></li>
+      <li><span>03</span><h3>Pneu e câmara</h3><p>Furou? Troca no mesmo dia na maioria dos modelos.</p></li>
+      <li><span>04</span><h3>Controlador e motor</h3><p>Perdeu força ou não liga: a gente diagnostica.</p></li>
+    </ul>
+    <a class="btn btn-linha cta-zap" data-zap="oficina" href="#">Falar com a oficina</a>
+  </section>
+
+  <!-- ============ LOJA ============ -->
+  <section class="secao loja" id="loja">
+    <div class="loja-texto">
+      <p class="etiqueta">Loja</p>
+      <h2>Vem ver de perto.</h2>
+      <address id="lojaEndereco"></address>
+      <p class="loja-horario" id="lojaHorario"></p>
+      <div class="loja-acoes">
+        <a class="btn btn-ouro cta-zap" data-zap="loja" href="#">Chamar no WhatsApp</a>
+        <a class="btn btn-linha" id="lojaRota" href="#" target="_blank" rel="noopener">Abrir no mapa</a>
+      </div>
+      <a class="loja-insta" id="lojaInsta" href="#" target="_blank" rel="noopener"></a>
+    </div>
+    <div class="loja-mapa">
+      <iframe id="lojaMapa" title="Mapa da loja" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="secao faq" id="faq">
+    <div class="secao-cab">
+      <p class="etiqueta">Perguntas</p>
+      <h2>Ficou alguma dúvida?</h2>
+    </div>
+    <div class="faq-lista">
+      <details>
+        <summary>Quanto aumenta minha conta de luz?</summary>
+        <p>Pouco. Uma scooter gasta por volta de 2 kWh a cada 100 km. Quem roda 20 km por dia paga uns R$ 12 de luz no mês. O painel lá em cima faz a conta pro teu trajeto.</p>
+      </details>
+      <details>
+        <summary>Carrega em tomada normal?</summary>
+        <p>Carrega. A maioria vem com carregador pra tomada comum de casa. Nos modelos de lítio a bateria sai do veículo e você leva pra carregar dentro de casa ou no trabalho.</p>
+      </details>
+      <details>
+        <summary>Quanto tempo dura a bateria?</summary>
+        <p>Depende do tipo. Bateria de lítio costuma aguentar mais ciclos de carga que a de chumbo-gel. Na loja a gente explica a diferença e o que cada modelo cobre na garantia.</p>
+      </details>
+      <details>
+        <summary>Tem garantia e parcelamento?</summary>
+        <p>Tem. As condições mudam por modelo e forma de pagamento, então chama no WhatsApp que a gente passa certinho.</p>
+      </details>
+      <details>
+        <summary>Pode andar na chuva?</summary>
+        <p>Chuva leve, sim. Não pode passar por alagamento nem lavar com jato de pressão. A gente ensina os cuidados na entrega.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ CHAMADA FINAL ============ -->
+  <section class="final">
+    <h2>Bora trocar a gasolina pela tomada?</h2>
+    <a class="btn btn-ouro cta-zap" data-zap="final" href="#">Chamar a Mega Elétron</a>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="marca marca-rodape">
+    <svg class="marca-picos" viewBox="0 0 40 34" aria-hidden="true"><path d="M0 32 13 6l7 12 7-12 13 26h-7l-6-13-7 12-7-12-6 13z"/></svg>
+    <span class="marca-nome"><b>MEGA</b><i>ELÉTRON</i></span>
+  </div>
+  <p id="rodapeLoja"></p>
+  <p class="rodape-creditos" id="rodapeCreditos"></p>
+  <p class="rodape-dzk">Prévia de catálogo feita pela <b>Dzk</b> · <a href="backend/index.html">Painel da loja</a></p>
+</footer>
+
+<a class="zap-fixo cta-fixo" data-zap="fixo" href="#" aria-label="Chamar no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7a11.4 11.4 0 0 1-4.4-3.9c-.5-.7-1.2-1.8-1.2-3.4s.8-2.4 1.1-2.7c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.4.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+</a>
+
+<!-- Detalhe do produto -->
+<dialog class="detalhe" id="detalhe" aria-labelledby="detNome">
+  <form method="dialog" class="detalhe-fechar"><button aria-label="Fechar">×</button></form>
+  <div class="detalhe-corpo" id="detalheCorpo"></div>
+</dialog>
+
+<script src="js/dados.js"></script>
+<script src="js/loja.js"></script>
+<script src="js/ilustracoes.js"></script>
+<script src="js/catalogo.js"></script>
+</body>
+</html>

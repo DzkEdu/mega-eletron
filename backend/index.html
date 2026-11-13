@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel da loja | Mega Elétron Pouso Alegre</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0d1626">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 34'%3E%3Cpath fill='%23d5be8c' d='M0 32 13 6l7 12 7-12 13 26h-7l-6-13-7 12-7-12-6 13z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Saira:wdth,wght@75..125,500..800&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="painel.css">
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<section class="entrar" id="entrar">
+  <form class="entrar-caixa" id="formEntrar">
+    <div class="marca">
+      <svg class="marca-picos" viewBox="0 0 40 34" aria-hidden="true"><path d="M0 32 13 6l7 12 7-12 13 26h-7l-6-13-7 12-7-12-6 13z"/></svg>
+      <span class="marca-nome"><b>MEGA</b><i>ELÉTRON</i></span>
+    </div>
+    <h1>Painel da loja</h1>
+    <p class="suave">Aqui você cadastra os produtos, muda preço e estoque. O catálogo atualiza sozinho.</p>
+    <label>Senha
+      <input type="password" id="senha" autocomplete="current-password" required>
+    </label>
+    <p class="erro" id="erroSenha" hidden>Senha errada. Tenta de novo.</p>
+    <button class="btn btn-ouro btn-cheio" type="submit">Entrar</button>
+    <p class="dica">Demonstração: a senha é <code>mega2026</code>. Na versão final, cada pessoa da loja tem o próprio login.</p>
+  </form>
+</section>
+
+<!-- ============ APP ============ -->
+<div class="app" id="app" hidden>
+  <header class="barra">
+    <div class="marca">
+      <svg class="marca-picos" viewBox="0 0 40 34" aria-hidden="true"><path d="M0 32 13 6l7 12 7-12 13 26h-7l-6-13-7 12-7-12-6 13z"/></svg>
+      <span class="marca-nome"><b>MEGA</b><i>ELÉTRON</i></span>
+      <span class="barra-titulo">Painel</span>
+    </div>
+    <nav class="abas" role="tablist" aria-label="Seções do painel">
+      <button role="tab" class="aba" data-aba="produtos" aria-selected="true">Produtos</button>
+      <button role="tab" class="aba" data-aba="loja" aria-selected="false">Loja e contato</button>
+      <button role="tab" class="aba" data-aba="backup" aria-selected="false">Backup</button>
+    </nav>
+    <div class="barra-acoes">
+      <a class="btn btn-linha btn-pq" href="../index.html" target="_blank" rel="noopener">Ver catálogo ↗</a>
+      <button class="btn-texto" id="sair" type="button">Sair</button>
+    </div>
+  </header>
+
+  <main class="conteudo">
+
+    <!-- PRODUTOS -->
+    <section class="painel-aba" id="aba-produtos" role="tabpanel">
+      <div class="aviso" id="avisoDemo">
+        <b>Versão de demonstração.</b> As alterações ficam salvas neste navegador e o catálogo aberto aqui já mostra.
+        Na versão final, os dados ficam num servidor e qualquer celular da loja edita.
+      </div>
+
+      <div class="numeros" id="numeros"></div>
+
+      <div class="ferramentas">
+        <label class="campo-busca">
+          <span class="sr">Buscar</span>
+          <input type="search" id="pBusca" placeholder="Buscar produto…" autocomplete="off">
+        </label>
+        <select id="pCat" aria-label="Filtrar por categoria"></select>
+        <select id="pEstoque" aria-label="Filtrar por estoque">
+          <option value="">Todo estoque</option>
+          <option value="disponivel">Pronta entrega</option>
+          <option value="encomenda">Sob encomenda</option>
+          <option value="esgotado">Esgotado</option>
+          <option value="oculto">Ocultos do catálogo</option>
+        </select>
+        <button class="btn btn-ouro" id="novo" type="button">+ Novo produto</button>
+      </div>
+
+      <div class="lista" id="lista" aria-live="polite"></div>
+    </section>
+
+    <!-- LOJA -->
+    <section class="painel-aba" id="aba-loja" role="tabpanel" hidden>
+      <form class="cartao form-config" id="formConfig">
+        <h2>Contato e endereço</h2>
+        <div class="grade-campos">
+          <label>Nome da loja <input name="loja" required></label>
+          <label>WhatsApp (com DDD) <input name="whatsapp" inputmode="tel" required placeholder="35 99999-9999"></label>
+          <label class="larga">Endereço <input name="endereco" required></label>
+          <label class="larga">Link do Google Maps <input name="mapsLink" type="url"></label>
+          <label>Instagram (sem @) <input name="instagram"></label>
+          <label>Horário <input name="horario" placeholder="Seg a sex 8h–18h · Sáb 8h–12h"></label>
+        </div>
+
+        <h2>No catálogo</h2>
+        <label class="troca"><input type="checkbox" name="mostrarPrecos"> <span>Mostrar preços</span> <small>Desligado, todos os produtos aparecem como “Consulte”.</small></label>
+        <label class="troca"><input type="checkbox" name="avisoExemplo"> <span>Faixa “prévia com produtos de exemplo”</span> <small>Desliga quando os produtos reais estiverem cadastrados.</small></label>
+
+        <h2>Conta da economia (painel do topo)</h2>
+        <div class="grade-campos tres">
+          <label>Gasolina (R$/litro) <input name="precoGasolina" type="number" step="0.01" min="0"></label>
+          <label>Luz (R$/kWh) <input name="precoKwh" type="number" step="0.01" min="0"></label>
+          <label>Consumo elétrico (kWh/100 km) <input name="consumoKwh100" type="number" step="0.1" min="0"></label>
+          <label>Moto a gasolina (km/l) <input name="kmPorLitroMoto" type="number" step="1" min="1"></label>
+          <label>Carro (km/l) <input name="kmPorLitroCarro" type="number" step="1" min="1"></label>
+          <label>Dias rodados no mês <input name="diasMes" type="number" step="1" min="1" max="31"></label>
+        </div>
+        <div class="rodape-form"><button class="btn btn-ouro" type="submit">Salvar</button></div>
+      </form>
+    </section>
+
+    <!-- BACKUP -->
+    <section class="painel-aba" id="aba-backup" role="tabpanel" hidden>
+      <div class="cartao">
+        <h2>Backup dos produtos</h2>
+        <p class="suave" id="ultimaAlteracao"></p>
+        <div class="blocos">
+          <div class="bloco">
+            <h3>Baixar backup</h3>
+            <p>Salva um arquivo com todos os produtos, fotos e dados da loja. Bom fazer toda semana.</p>
+            <button class="btn btn-linha" id="exportar" type="button">Baixar arquivo</button>
+          </div>
+          <div class="bloco">
+            <h3>Restaurar backup</h3>
+            <p>Escolhe um arquivo baixado antes. Ele substitui o que está no painel agora.</p>
+            <label class="btn btn-linha">Escolher arquivo <input type="file" id="importar" accept="application/json,.json" hidden></label>
+          </div>
+          <div class="bloco perigo">
+            <h3>Voltar pro exemplo</h3>
+            <p>Apaga as alterações e volta pros produtos de exemplo da prévia.</p>
+            <button class="btn btn-perigo" id="restaurar" type="button">Restaurar exemplo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============ EDITOR ============ -->
+<dialog class="editor" id="editor" aria-labelledby="edTitulo">
+  <form id="formProduto" novalidate>
+    <header class="editor-cab">
+      <h2 id="edTitulo">Novo produto</h2>
+      <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+    </header>
+
+    <div class="editor-corpo">
+      <div class="editor-foto">
+        <div class="previa" id="previa"></div>
+        <div class="foto-acoes">
+          <label class="btn btn-linha btn-pq">Enviar foto <input type="file" id="foto" accept="image/*" hidden></label>
+          <button type="button" class="btn-texto" id="tirarFoto" hidden>Remover foto</button>
+        </div>
+        <p class="dica">Sem foto, o catálogo mostra uma ilustração na cor do produto.</p>
+
+        <fieldset class="cores">
+          <legend>Cores disponíveis</legend>
+          <div class="cores-lista" id="cores"></div>
+          <button type="button" class="btn-texto" id="addCor">+ cor</button>
+        </fieldset>
+      </div>
+
+      <div class="editor-campos">
+        <label class="larga">Nome do produto * <input name="nome" required maxlength="60"></label>
+        <label>Categoria <select name="cat" id="edCat"></select></label>
+        <label>Habilitação
+          <select name="habilitacao">
+            <option value="auto">Sem CNH (autopropelido)</option>
+            <option value="bike">Sem CNH (bike elétrica)</option>
+            <option value="">Não se aplica (acessório)</option>
+          </select>
+        </label>
+        <label>Preço (R$) <input name="preco" type="number" min="0" step="1" placeholder="vazio = Consulte"></label>
+        <label>Preço antigo (R$) <input name="precoDe" type="number" min="0" step="1" placeholder="pra mostrar riscado"></label>
+        <label>Velocidade máx. (km/h) <input name="vel" type="number" min="0" step="1"></label>
+        <label>Autonomia (km) <input name="autonomia" type="number" min="0" step="1"></label>
+        <label>Motor <input name="motor" placeholder="1000 W"></label>
+        <label>Bateria <input name="bateria" placeholder="Lítio 60V 20Ah"></label>
+        <label>Recarga <input name="recarga" placeholder="6 a 8 h"></label>
+        <label>Carga máx. (kg) <input name="cargaMax" type="number" min="0" step="1"></label>
+        <label class="larga">Resumo (aparece no card) <textarea name="resumo" rows="3" maxlength="160"></textarea></label>
+        <label>Estoque
+          <select name="estoque">
+            <option value="disponivel">Pronta entrega</option>
+            <option value="encomenda">Sob encomenda</option>
+            <option value="esgotado">Esgotado</option>
+          </select>
+        </label>
+        <div class="checks">
+          <label class="troca"><input type="checkbox" name="visivel"> <span>Aparece no catálogo</span></label>
+          <label class="troca"><input type="checkbox" name="destaque"> <span>Destaque</span></label>
+          <label class="troca"><input type="checkbox" name="exemplo"> <span>É produto de exemplo</span></label>
+        </div>
+        <p class="erro larga" id="erroProduto" hidden>Dá um nome pro produto.</p>
+      </div>
+    </div>
+
+    <footer class="editor-pe">
+      <button type="button" class="btn btn-perigo btn-pq" id="excluir" hidden>Excluir</button>
+      <span class="espaco"></span>
+      <button type="button" class="btn btn-linha" data-fechar>Cancelar</button>
+      <button type="submit" class="btn btn-ouro">Salvar</button>
+    </footer>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="../js/dados.js"></script>
+<script src="../js/loja.js"></script>
+<script src="../js/ilustracoes.js"></script>
+<script src="painel.js"></script>
+</body>
+</html>
